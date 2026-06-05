@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>biggestdognas.uk | Directory</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --container-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #7dd3fc;
+            --card-border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--container-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background-color: rgba(15, 23, 42, 0.6);
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-main);
+        }
+
+        .card-url {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .badge {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background-color: var(--card-border);
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .card:hover .badge {
+            background-color: rgba(56, 189, 248, 0.2);
+            color: var(--accent-hover);
+        }
+
+        .copyable {
+            cursor: pointer;
+        }
+
+        /* Tooltip style for copy confirmation */
+        .tooltip {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>biggestdognas.uk</h1>
+            <p class="subtitle">Network Directory & Services</p>
+        </header>
+
+        <main class="grid">
+            <!-- NAS Primary -->
+            <a href="http://nas.biggestdognas.uk" target="_blank" class="card">
+                <div class="card-info">
+                    <span class="card-title">TrueNAS Core / Scale</span>
+                    <span class="card-url">nas.biggestdognas.uk</span>
+                </div>
+                <span class="badge">Web UI</span>
+            </a>
+
+            <!-- MCA (Admin / Control Panel) -->
+            <a href="https://mca.biggestdognas.uk" target="_blank" class="card">
+                <div class="card-info">
+                    <span class="card-title">Management / Apps Admin</span>
+                    <span class="card-url">mca.biggestdognas.uk</span>
+                </div>
+                <span class="badge">Secure</span>
+            </a>
+
+            <!-- MKV (Media / Video Server) -->
+            <a href="http://mkv.biggestdognas.uk" target="_blank" class="card">
+                <div class="card-info">
+                    <span class="card-title">Media & Stream Server</span>
+                    <span class="card-url">mkv.biggestdognas.uk</span>
+                </div>
+                <span class="badge">HTTP</span>
+            </a>
+
+            <!-- Minecraft Server IP Entry -->
+            <div class="card copyable" onclick="copyToClipboard('mc.biggestdognas.uk', this)" title="Click to copy server IP">
+                <div class="card-info">
+                    <span class="card-title">Minecraft Game Server</span>
+                    <span class="card-url" id="mc-ip">mc.biggestdognas.uk</span>
+                </div>
+                <span class="badge" id="copy-status">Click to Copy IP</span>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                const badge = element.querySelector('#copy-status');
+                const originalText = badge.innerText;
+                badge.innerText = "Copied!";
+                badge.style.backgroundColor = "#22c55e";
+                badge.style.color = "#ffffff";
+                
+                setTimeout(() => {
+                    badge.innerText = originalText;
+                    badge.style.backgroundColor = "";
+                    badge.style.color = "";
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
