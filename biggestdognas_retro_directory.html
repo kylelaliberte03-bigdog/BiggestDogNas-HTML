@@ -1,0 +1,61 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap');
+  .retro-wrap { padding: 2rem 1.5rem; font-family: 'IBM Plex Mono', monospace; }
+  .retro-header { margin-bottom: 2rem; }
+  .retro-title { font-family: 'VT323', monospace; font-size: 36px; color: #8B5E3C; letter-spacing: 1px; margin: 0 0 2px; }
+  .retro-sub { font-size: 12px; color: #9B8B7A; margin: 0; }
+  .retro-divider { border: none; border-top: 1px dashed #C4A882; margin: 0 0 1.5rem; }
+  .retro-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .retro-item { display: flex; align-items: baseline; gap: 12px; padding: 6px 0; border-bottom: 1px dotted #DDD0BC; }
+  .retro-item:last-child { border-bottom: none; }
+  .retro-bullet { color: #C4A882; font-size: 13px; flex-shrink: 0; }
+  .retro-label { font-size: 14px; color: #4A3728; font-weight: 600; min-width: 140px; flex-shrink: 0; }
+  .retro-url { font-size: 13px; color: #8B5E3C; text-decoration: none; }
+  .retro-url:hover { color: #4A3728; text-decoration: underline; }
+  .retro-copy { font-size: 13px; color: #8B5E3C; cursor: pointer; background: none; border: none; font-family: inherit; padding: 0; }
+  .retro-copy:hover { color: #4A3728; text-decoration: underline; }
+  .retro-tag { font-size: 11px; color: #9B8B7A; margin-left: auto; flex-shrink: 0; }
+  .retro-footer { margin-top: 1.5rem; font-size: 11px; color: #B8A898; }
+</style>
+<div class="retro-wrap">
+  <div class="retro-header">
+    <p class="retro-title">BIGGESTDOGNAS.UK</p>
+    <p class="retro-sub">network directory &amp; services</p>
+  </div>
+  <hr class="retro-divider">
+  <ul class="retro-list">
+    <li class="retro-item">
+      <span class="retro-bullet">[1]</span>
+      <span class="retro-label">TrueNAS Admin</span>
+      <a href="http://nas.biggestdognas.uk" target="_blank" class="retro-url">nas.biggestdognas.uk</a>
+    </li>
+    <li class="retro-item">
+      <span class="retro-bullet">[2]</span>
+      <span class="retro-label">MC Admin Portal</span>
+      <a href="https://mca.biggestdognas.uk" target="_blank" class="retro-url">mca.biggestdognas.uk</a>
+    </li>
+    <li class="retro-item">
+      <span class="retro-bullet">[3]</span>
+      <span class="retro-label">Jellyfin</span>
+      <a href="http://mkv.biggestdognas.uk" target="_blank" class="retro-url">mkv.biggestdognas.uk</a>
+    </li>
+    <li class="retro-item">
+      <span class="retro-bullet">[4]</span>
+      <span class="retro-label">Minecraft IP</span>
+      <button class="retro-copy" id="mc-btn" onclick="copyMC()">mc.biggestdognas.uk</button>
+      <span class="retro-tag" id="mc-tag">[ click to copy ]</span>
+    </li>
+  </ul>
+  <p class="retro-footer">// biggestdognas home network</p>
+</div>
+<script>
+  function copyMC() {
+    navigator.clipboard.writeText('mc.biggestdognas.uk').then(() => {
+      const tag = document.getElementById('mc-tag');
+      tag.textContent = '[ copied! ]';
+      tag.style.color = '#7A6A3C';
+      setTimeout(() => { tag.textContent = '[ click to copy ]'; tag.style.color = ''; }, 2000);
+    });
+  }
+</script>
